@@ -9,9 +9,11 @@
 /* Begin PBXBuildFile section */
 		36777678C1A83103907B331E /* Pods_Publisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 291B6AAFA647D798DD666BA0 /* Pods_Publisher.framework */; };
 		FF2F072327F7DC7F0032E1C0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FF2F072227F7DC7F0032E1C0 /* GoogleService-Info.plist */; };
+		FF2F072A27F7E03E0032E1C0 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2F072827F7E03E0032E1C0 /* HomeTableViewCell.swift */; };
+		FF2F072B27F7E03E0032E1C0 /* HomeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF2F072927F7E03E0032E1C0 /* HomeTableViewCell.xib */; };
 		FF61940327F7DA33007942A9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF61940227F7DA33007942A9 /* AppDelegate.swift */; };
 		FF61940527F7DA33007942A9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF61940427F7DA33007942A9 /* SceneDelegate.swift */; };
-		FF61940727F7DA33007942A9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF61940627F7DA33007942A9 /* ViewController.swift */; };
+		FF61940727F7DA33007942A9 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF61940627F7DA33007942A9 /* HomeViewController.swift */; };
 		FF61940A27F7DA33007942A9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF61940827F7DA33007942A9 /* Main.storyboard */; };
 		FF61940C27F7DA35007942A9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF61940B27F7DA35007942A9 /* Assets.xcassets */; };
 		FF61940F27F7DA35007942A9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF61940D27F7DA35007942A9 /* LaunchScreen.storyboard */; };
@@ -22,10 +24,12 @@
 		291B6AAFA647D798DD666BA0 /* Pods_Publisher.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Publisher.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CD8845AD99C4BCCB5DE4ADE /* Pods-Publisher.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Publisher.release.xcconfig"; path = "Target Support Files/Pods-Publisher/Pods-Publisher.release.xcconfig"; sourceTree = "<group>"; };
 		FF2F072227F7DC7F0032E1C0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		FF2F072827F7E03E0032E1C0 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
+		FF2F072927F7E03E0032E1C0 /* HomeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeTableViewCell.xib; sourceTree = "<group>"; };
 		FF6193FF27F7DA33007942A9 /* Publisher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Publisher.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF61940227F7DA33007942A9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FF61940427F7DA33007942A9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		FF61940627F7DA33007942A9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		FF61940627F7DA33007942A9 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		FF61940927F7DA33007942A9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FF61940B27F7DA35007942A9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FF61940E27F7DA35007942A9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -71,6 +75,8 @@
 		FF2F072527F7DDF40032E1C0 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				FF2F072827F7E03E0032E1C0 /* HomeTableViewCell.swift */,
+				FF2F072927F7E03E0032E1C0 /* HomeTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -78,7 +84,7 @@
 		FF2F072627F7DDF70032E1C0 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				FF61940627F7DA33007942A9 /* ViewController.swift */,
+				FF61940627F7DA33007942A9 /* HomeViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -189,6 +195,7 @@
 				FF61940F27F7DA35007942A9 /* LaunchScreen.storyboard in Resources */,
 				FF2F072327F7DC7F0032E1C0 /* GoogleService-Info.plist in Resources */,
 				FF61940C27F7DA35007942A9 /* Assets.xcassets in Resources */,
+				FF2F072B27F7E03E0032E1C0 /* HomeTableViewCell.xib in Resources */,
 				FF61940A27F7DA33007942A9 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -242,8 +249,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FF61940727F7DA33007942A9 /* ViewController.swift in Sources */,
+				FF61940727F7DA33007942A9 /* HomeViewController.swift in Sources */,
 				FF61940327F7DA33007942A9 /* AppDelegate.swift in Sources */,
+				FF2F072A27F7E03E0032E1C0 /* HomeTableViewCell.swift in Sources */,
 				FF61940527F7DA33007942A9 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

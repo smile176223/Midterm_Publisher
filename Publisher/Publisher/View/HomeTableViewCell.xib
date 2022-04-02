@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HomeTableViewCell" id="KGk-i7-Jjw" customClass="HomeTableViewCell" customModule="Publisher" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="300"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="300"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="標題" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Alm-zP-glG">
+                        <rect key="frame" x="16" y="16" width="36" height="25.5"/>
+                        <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="18"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="作者" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IZu-BF-DcL">
+                        <rect key="frame" x="16" y="49.5" width="32" height="22.5"/>
+                        <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="16"/>
+                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="日期" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vht-Is-xVK">
+                        <rect key="frame" x="16" y="80" width="32" height="22.5"/>
+                        <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="16"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="標籤" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ruu-Bq-ksN">
+                        <rect key="frame" x="269" y="50.5" width="35" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="VsQ-z7-hmD"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="內容" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GD4-eV-RsA">
+                        <rect key="frame" x="16" y="110.5" width="32" height="22.5"/>
+                        <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="16"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="ruu-Bq-ksN" firstAttribute="centerY" secondItem="IZu-BF-DcL" secondAttribute="centerY" id="0oV-yB-g1I"/>
+                    <constraint firstItem="vht-Is-xVK" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="8SH-Hg-x2z"/>
+                    <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="GD4-eV-RsA" secondAttribute="trailing" constant="16" id="98S-wq-eeS"/>
+                    <constraint firstItem="GD4-eV-RsA" firstAttribute="top" secondItem="vht-Is-xVK" secondAttribute="bottom" constant="8" id="9OE-oh-F64"/>
+                    <constraint firstItem="vht-Is-xVK" firstAttribute="top" secondItem="IZu-BF-DcL" secondAttribute="bottom" constant="8" id="D6s-dp-OHH"/>
+                    <constraint firstAttribute="trailing" secondItem="ruu-Bq-ksN" secondAttribute="trailing" constant="16" id="IIT-nO-CMz"/>
+                    <constraint firstItem="Alm-zP-glG" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="LKX-2D-36c"/>
+                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Alm-zP-glG" secondAttribute="trailing" constant="16" id="NS8-eK-7zs"/>
+                    <constraint firstItem="GD4-eV-RsA" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="UjV-MT-GLv"/>
+                    <constraint firstItem="IZu-BF-DcL" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="jIR-J5-Gol"/>
+                    <constraint firstItem="Alm-zP-glG" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="k7B-5e-W1i"/>
+                    <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="GD4-eV-RsA" secondAttribute="bottom" constant="16" id="lvi-PF-2ww"/>
+                    <constraint firstItem="IZu-BF-DcL" firstAttribute="top" secondItem="Alm-zP-glG" secondAttribute="bottom" constant="8" id="wvo-Aq-46q"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="authorLabel" destination="IZu-BF-DcL" id="Br0-IA-ba1"/>
+                <outlet property="contentLabel" destination="GD4-eV-RsA" id="ZCb-VE-zb9"/>
+                <outlet property="dateLabel" destination="vht-Is-xVK" id="QlI-Gk-eQp"/>
+                <outlet property="tagLabel" destination="ruu-Bq-ksN" id="iUH-a9-NgR"/>
+                <outlet property="titleLabel" destination="Alm-zP-glG" id="jKq-zY-MC8"/>
+            </connections>
+            <point key="canvasLocation" x="139" y="121"/>
+        </tableViewCell>
+    </objects>
+</document>
