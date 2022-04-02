@@ -23,7 +23,7 @@ class HomeTableViewCell: UITableViewCell {
         super.awakeFromNib()
     }
     
-    func layoutCell(title: String, author: String, tag: String, date: Double, content: String) {
+    func layoutCell(title: String, author: String, tag: String, date: String, content: String) {
         
         titleLabel.text = title
         

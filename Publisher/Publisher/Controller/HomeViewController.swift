@@ -18,7 +18,15 @@ class HomeViewController: UIViewController {
         }
     }
     
+    var fireStoreData: [[String: Any]] = [] {
+        didSet {
+            tableView.reloadData()
+        }
+    }
+    
     let publishButton = UIButton()
+    
+    let db = Firestore.firestore()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +34,8 @@ class HomeViewController: UIViewController {
         setupTableView()
         
         setupButton()
+        
+        getData()
     }
     
     private func setupTableView() {
@@ -58,20 +68,17 @@ class HomeViewController: UIViewController {
         present(publishVC, animated: true)
     }
     
-    func addData() {
-        let articles = Firestore.firestore().collection("articles")
-        let document = articles.document()
-        let data: [String: Any] = [ "author": [
-            "email": "wayne@school.appworks.tw", "id": "waynechen323",
-            "name": "AKA小安老師"
-        ],
-                                    "title": "IU「亂穿」竟美出新境界!笑稱自己品味奇怪 網笑:靠顏值撐住女神氣場",
-                                    "content": "南韓歌手IU(李知恩)無論在歌唱方面或是近期的戲劇作品都有亮眼的成績，但俗話說人無完美、美玉微瑕，曾再跟工作人員的互動影片中坦言自己品味很奇怪，近日在IG上分享了宛如「媽媽們青春時代的玉女歌手」超復古穿搭造型，卻意外美出新境界。",
-                                    "createdTime": NSDate().timeIntervalSince1970,
-                                    "id": document.documentID,
-                                    "category": "Beauty"
-        ]
-        document.setData(data) }
+    func getData() {
+        db.collection("articles").getDocuments() { (snapshot, error) in
+            if let error = error {
+                print("error:",error)
+            } else {
+                for document in snapshot!.documents {
+                    self.fireStoreData.insert(document.data(), at: 0)
+                }
+            }
+        }
+    }
 
 
 }
@@ -83,7 +90,11 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        5
+        if fireStoreData.isEmpty == true {
+            return 0
+        } else {
+            return fireStoreData.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -91,13 +102,16 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             return UITableViewCell()
         }
         
-        cell.layoutCell(title: "IU「亂穿」竟美出新境界!笑稱自己品味奇怪 網笑:靠顏值撐住女神氣場",
-                        author: "AKA小安老師",
-                        tag: "Beauty",
-                        date: NSDate().timeIntervalSince1970,
-                        content: "南韓歌手IU(李知恩)無論在歌唱方面或是近期的戲劇作品都有亮眼的成績，但俗話說人無完美、美玉微瑕，曾再跟工作人員的互動影片中坦言自己品味很奇怪，近日在IG上分享了宛如「媽媽們青春時代的玉女歌手」超復古穿搭造型，卻意外美出新境界。")
+        let fireStoreData = fireStoreData[indexPath.row]
+        let author: [String: Any] = fireStoreData["author"] as? [String : Any] ?? [:]
         
-        cell.setupTag(tag: "Beauty")
+        cell.layoutCell(title: "\(fireStoreData["title"] ?? "")",
+                        author: "\(author["name"] ?? "")",
+                        tag: "\(fireStoreData["category"] ?? "")",
+                        date: "\(fireStoreData["createdTime"] ?? "")",
+                        content: "\(fireStoreData["content"] ?? "")")
+        
+        cell.setupTag(tag: "\(fireStoreData["category"] ?? "")")
         
         return cell
     }
