@@ -30,6 +30,15 @@ class PublishViewController: UIViewController {
     
     weak var delegate: PublishViewControllerDelegate?
     
+    enum Articles: String {
+        case title = "title"
+        case createdTime = "createdTime"
+        case author = "author"
+        case category = "category"
+        case content = "content"
+        case id = "id"
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     
@@ -63,12 +72,12 @@ class PublishViewController: UIViewController {
         let articles = Firestore.firestore().collection("articles")
         let document = articles.document()
         let data: [String: Any] = [
-            "author": author,
-            "title": title,
-            "content": content,
-            "createdTime": NSDate().timeIntervalSince1970,
-            "id": document.documentID,
-            "category": category
+            Articles.author.rawValue: author,
+            Articles.title.rawValue: title,
+            Articles.content.rawValue: content,
+            Articles.createdTime.rawValue: NSDate().timeIntervalSince1970,
+            Articles.id.rawValue: document.documentID,
+            Articles.category.rawValue: category
         ]
         document.setData(data) }
     
