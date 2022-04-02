@@ -18,16 +18,44 @@ class HomeViewController: UIViewController {
         }
     }
     
+    let publishButton = UIButton()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupTableView()
-      
+        
+        setupButton()
     }
     
     private func setupTableView() {
         tableView.register(UINib(nibName: "\(HomeTableViewCell.self)", bundle: nil),
                            forCellReuseIdentifier: "\(HomeTableViewCell.self)")
+    }
+    
+    private func setupButton() {
+        publishButton.backgroundColor = UIColor.blue
+        publishButton.layer.masksToBounds = true
+        publishButton.layer.cornerRadius = 25
+        publishButton.addTarget(self, action: #selector(publishTap), for: .touchUpInside)
+        view.addSubview(publishButton)
+        publishButton.translatesAutoresizingMaskIntoConstraints = false
+        publishButton.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor, constant: -20).isActive = true
+        publishButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20).isActive = true
+        publishButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        publishButton.widthAnchor.constraint(equalToConstant: 50).isActive = true
+        
+    }
+    
+    @objc private func publishTap() {
+        guard let publishVC = storyboard?.instantiateViewController(withIdentifier: "\(PublishViewController.self)")
+                as? PublishViewController
+        else {
+            return
+        }
+        publishVC.modalPresentationStyle = .overCurrentContext
+//        publishVC.modalTransitionStyle = .crossDissolve
+        present(publishVC, animated: true)
     }
     
     func addData() {
@@ -55,7 +83,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        1
+        5
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

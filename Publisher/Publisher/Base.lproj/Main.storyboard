@@ -16,18 +16,30 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="GKA-0Z-lzH">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sfc-nk-5wQ">
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <subviews>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="GKA-0Z-lzH">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="774"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    </tableView>
+                                </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            </tableView>
+                                <constraints>
+                                    <constraint firstItem="GKA-0Z-lzH" firstAttribute="leading" secondItem="sfc-nk-5wQ" secondAttribute="leading" id="0qy-G1-5jN"/>
+                                    <constraint firstItem="GKA-0Z-lzH" firstAttribute="top" secondItem="sfc-nk-5wQ" secondAttribute="top" id="CZf-ku-DhE"/>
+                                    <constraint firstAttribute="bottom" secondItem="GKA-0Z-lzH" secondAttribute="bottom" id="dpD-xK-MEf"/>
+                                    <constraint firstAttribute="trailing" secondItem="GKA-0Z-lzH" secondAttribute="trailing" id="eNn-wO-feQ"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="GKA-0Z-lzH" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="4Nm-Ge-IDX"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="GKA-0Z-lzH" secondAttribute="trailing" id="6Ur-tU-vDb"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="GKA-0Z-lzH" secondAttribute="bottom" id="Wwn-r0-ZMp"/>
-                            <constraint firstItem="GKA-0Z-lzH" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="wiJ-R5-skx"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="sfc-nk-5wQ" secondAttribute="trailing" id="AJC-aj-wSz"/>
+                            <constraint firstItem="sfc-nk-5wQ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="DXl-mc-mfP"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="sfc-nk-5wQ" secondAttribute="bottom" id="VMI-VR-kYi"/>
+                            <constraint firstItem="sfc-nk-5wQ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="obq-Oq-UVA"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Publisher" id="oEh-FT-rTZ"/>
@@ -37,7 +49,22 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1047.8260869565217" y="105.80357142857143"/>
+            <point key="canvasLocation" x="986.95652173913049" y="105.80357142857143"/>
+        </scene>
+        <!--Publish View Controller-->
+        <scene sceneID="9Fz-T1-Dh2">
+            <objects>
+                <viewController storyboardIdentifier="PublishViewController" id="6cz-uh-pa4" customClass="PublishViewController" customModule="Publisher" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hPt-MB-uPI">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="Tgg-Cs-bnK"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mr1-gO-QbT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1896" y="106"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="NfX-Dq-JhN">
