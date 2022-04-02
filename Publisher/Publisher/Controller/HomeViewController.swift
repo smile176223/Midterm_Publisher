@@ -44,9 +44,11 @@ class HomeViewController: UIViewController {
     }
     
     private func setupButton() {
-        publishButton.backgroundColor = UIColor.blue
+        publishButton.backgroundColor = .black
         publishButton.layer.masksToBounds = true
         publishButton.layer.cornerRadius = 25
+        publishButton.tintColor = .white
+        publishButton.setImage(UIImage(systemName: "plus"), for: .normal)
         publishButton.addTarget(self, action: #selector(publishTap), for: .touchUpInside)
         view.addSubview(publishButton)
         publishButton.translatesAutoresizingMaskIntoConstraints = false
@@ -69,7 +71,7 @@ class HomeViewController: UIViewController {
     }
     
     func getData() {
-        db.collection("articles").getDocuments() { (snapshot, error) in
+        db.collection("articles").order(by: "createdTime").getDocuments() { (snapshot, error) in
             if let error = error {
                 print("error:",error)
             } else {
@@ -79,8 +81,6 @@ class HomeViewController: UIViewController {
             }
         }
     }
-
-
 }
 
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
@@ -104,11 +104,12 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         
         let fireStoreData = fireStoreData[indexPath.row]
         let author: [String: Any] = fireStoreData["author"] as? [String : Any] ?? [:]
+        let date = NSDate(timeIntervalSince1970: fireStoreData["createdTime"] as? TimeInterval ?? 0.0)
         
         cell.layoutCell(title: "\(fireStoreData["title"] ?? "")",
                         author: "\(author["name"] ?? "")",
                         tag: "\(fireStoreData["category"] ?? "")",
-                        date: "\(fireStoreData["createdTime"] ?? "")",
+                        date: "\(date)",
                         content: "\(fireStoreData["content"] ?? "")")
         
         cell.setupTag(tag: "\(fireStoreData["category"] ?? "")")

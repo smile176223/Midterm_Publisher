@@ -43,9 +43,9 @@ class PublishViewController: UIViewController {
         let document = articles.document()
         let data: [String: Any] = [
             "author": [
-                "email": "test@school.appworks.tw",
-                "id": "test323",
-                "name": "test"
+                "email": "Liam@school.appworks.tw",
+                "id": "Liam123",
+                "name": "Liam"
             ],
             "title": title,
             "content": content,
