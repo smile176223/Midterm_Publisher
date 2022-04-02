@@ -21,12 +21,18 @@ class PublishViewController: UIViewController {
     let inputContent = UITextView()
     
     let publishButton = UIButton()
+
+    var author = [
+        "email": "Liam@gmail.com",
+        "id": "LiamHao",
+        "name": "Liam"
+    ]
     
     weak var delegate: PublishViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+    
         setupLayout()
     }
     
@@ -57,11 +63,7 @@ class PublishViewController: UIViewController {
         let articles = Firestore.firestore().collection("articles")
         let document = articles.document()
         let data: [String: Any] = [
-            "author": [
-                "email": "Liam@school.appworks.tw",
-                "id": "Liam123",
-                "name": "Liam"
-            ],
+            "author": author,
             "title": title,
             "content": content,
             "createdTime": NSDate().timeIntervalSince1970,
@@ -82,7 +84,6 @@ extension PublishViewController {
         inputTitle.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor, constant: 4).isActive = true
         inputTitle.leftAnchor.constraint(equalTo: view.layoutMarginsGuide.leftAnchor, constant: 4).isActive = true
         inputTitle.rightAnchor.constraint(equalTo: view.layoutMarginsGuide.rightAnchor, constant: -4).isActive = true
-        inputTitle.heightAnchor.constraint(equalToConstant: 30).isActive = true
         
         inputCategory.borderStyle = .bezel
         view.addSubview(inputCategory)
@@ -90,7 +91,6 @@ extension PublishViewController {
         inputCategory.topAnchor.constraint(equalTo: inputTitle.bottomAnchor, constant: 4).isActive = true
         inputCategory.leftAnchor.constraint(equalTo: view.layoutMarginsGuide.leftAnchor, constant: 4).isActive = true
         inputCategory.rightAnchor.constraint(equalTo: view.layoutMarginsGuide.rightAnchor, constant: -4).isActive = true
-        inputCategory.heightAnchor.constraint(equalToConstant: 30).isActive = true
         
         inputContent.layer.borderColor = UIColor.black.cgColor
         inputContent.layer.borderWidth = 1
@@ -110,7 +110,6 @@ extension PublishViewController {
         publishButton.leftAnchor.constraint(equalTo: view.layoutMarginsGuide.leftAnchor, constant: 4).isActive = true
         publishButton.rightAnchor.constraint(equalTo: view.layoutMarginsGuide.rightAnchor, constant: -4).isActive = true
         publishButton.bottomAnchor.constraint(equalTo: view.layoutMarginsGuide.bottomAnchor, constant: -4).isActive = true
-        publishButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
     }
 }

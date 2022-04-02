@@ -73,7 +73,7 @@ class HomeViewController: UIViewController {
             return
         }
         publishVC.delegate = self
-//        publishVC.modalPresentationStyle = .overCurrentContext
+        
         present(publishVC, animated: true)
     }
     
@@ -112,25 +112,30 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(HomeTableViewCell.self)", for: indexPath) as? HomeTableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(HomeTableViewCell.self)", for: indexPath)
+                as? HomeTableViewCell
+        else {
             return UITableViewCell()
         }
         
         let fireStoreData = fireStoreData[indexPath.row]
         let author: [String: Any] = fireStoreData["author"] as? [String : Any] ?? [:]
-        let date = NSDate(timeIntervalSince1970: fireStoreData["createdTime"] as? TimeInterval ?? 0.0)
+        let createdTime = fireStoreData["createdTime"] as? Double ?? 0.0
+        let date = NSDate(timeIntervalSince1970:  createdTime)
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy.MM.dd HH:mm"
+
         
         cell.layoutCell(title: "\(fireStoreData["title"] ?? "")",
                         author: "\(author["name"] ?? "")",
                         tag: "\(fireStoreData["category"] ?? "")",
-                        date: "\(date)",
+                        date: formatter.string(from: date as Date),
                         content: "\(fireStoreData["content"] ?? "")")
         
         cell.setupTag(tag: "\(fireStoreData["category"] ?? "")")
         
         return cell
     }
-    
     
 }
 
