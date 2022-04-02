@@ -25,6 +25,18 @@ class HomeViewController: UIViewController {
         }
     }
     
+    enum Articles: String {
+        case title = "title"
+        case createdTime = "createdTime"
+        case author = "author"
+        case category = "category"
+        case content = "content"
+    }
+    
+    enum Author: String {
+        case name = "name"
+    }
+    
     var fireStoreData: [[String: Any]] = [] {
         didSet {
             tableView.reloadData()
@@ -77,23 +89,23 @@ class HomeViewController: UIViewController {
         present(publishVC, animated: true)
     }
     
-    func getData() {
-        db.collection("articles").order(by: "createdTime").getDocuments() { [weak self] (snapshot, error) in
+    private func getData() {
+        db.collection("articles").order(by: Articles.createdTime.rawValue).getDocuments() { [weak self] (snapshot, error) in
             self?.fireStoreData = []
             if let error = error {
-                print("error:",error)
+                print(error)
             } else {
                 for document in snapshot!.documents {
                     self?.fireStoreData.insert(document.data(), at: 0)
                 }
             }
         }
+        
     }
     
-    func headerLoader() {
+    private func headerLoader() {
 
         tableView.endHeaderRefreshing()
-
     }
 }
 
@@ -119,20 +131,20 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         }
         
         let fireStoreData = fireStoreData[indexPath.row]
-        let author: [String: Any] = fireStoreData["author"] as? [String : Any] ?? [:]
-        let createdTime = fireStoreData["createdTime"] as? Double ?? 0.0
+        let author: [String: Any] = fireStoreData[Articles.author.rawValue] as? [String : Any] ?? [:]
+        let createdTime = fireStoreData[Articles.createdTime.rawValue] as? Double ?? 0.0
         let date = NSDate(timeIntervalSince1970:  createdTime)
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy.MM.dd HH:mm"
 
         
-        cell.layoutCell(title: "\(fireStoreData["title"] ?? "")",
-                        author: "\(author["name"] ?? "")",
-                        tag: "\(fireStoreData["category"] ?? "")",
+        cell.layoutCell(title: "\(fireStoreData[Articles.title.rawValue] ?? "")",
+                        author: "\(author[Author.name.rawValue] ?? "")",
+                        tag: "\(fireStoreData[Articles.category.rawValue] ?? "")",
                         date: formatter.string(from: date as Date),
-                        content: "\(fireStoreData["content"] ?? "")")
+                        content: "\(fireStoreData[Articles.content.rawValue] ?? "")")
         
-        cell.setupTag(tag: "\(fireStoreData["category"] ?? "")")
+        cell.setupTag(tag: "\(fireStoreData[Articles.category.rawValue] ?? "")")
         
         return cell
     }
