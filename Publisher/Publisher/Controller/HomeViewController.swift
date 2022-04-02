@@ -15,6 +15,13 @@ class HomeViewController: UIViewController {
             tableView.delegate = self
             
             tableView.dataSource = self
+            
+            tableView.addRefreshHeader(refreshingBlock: { [weak self] in
+
+                self?.getData()
+                
+                self?.headerLoader()
+            })
         }
     }
     
@@ -65,21 +72,28 @@ class HomeViewController: UIViewController {
         else {
             return
         }
-        publishVC.modalPresentationStyle = .overCurrentContext
-//        publishVC.modalTransitionStyle = .crossDissolve
+        publishVC.delegate = self
+//        publishVC.modalPresentationStyle = .overCurrentContext
         present(publishVC, animated: true)
     }
     
     func getData() {
-        db.collection("articles").order(by: "createdTime").getDocuments() { (snapshot, error) in
+        db.collection("articles").order(by: "createdTime").getDocuments() { [weak self] (snapshot, error) in
+            self?.fireStoreData = []
             if let error = error {
                 print("error:",error)
             } else {
                 for document in snapshot!.documents {
-                    self.fireStoreData.insert(document.data(), at: 0)
+                    self?.fireStoreData.insert(document.data(), at: 0)
                 }
             }
         }
+    }
+    
+    func headerLoader() {
+
+        tableView.endHeaderRefreshing()
+
     }
 }
 
@@ -118,4 +132,10 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     
+}
+
+extension HomeViewController: PublishViewControllerDelegate {
+    func refresh() {
+        getData()
+    }
 }

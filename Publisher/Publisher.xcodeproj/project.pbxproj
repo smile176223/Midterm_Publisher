@@ -13,6 +13,7 @@
 		FF2F072B27F7E03E0032E1C0 /* HomeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF2F072927F7E03E0032E1C0 /* HomeTableViewCell.xib */; };
 		FF2F072F27F7EBC70032E1C0 /* PublishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2F072E27F7EBC70032E1C0 /* PublishViewController.swift */; };
 		FF2F073127F803170032E1C0 /* ArticlesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2F073027F803170032E1C0 /* ArticlesModel.swift */; };
+		FF2F073427F821B60032E1C0 /* MJRefreshWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2F073327F821B60032E1C0 /* MJRefreshWrapper.swift */; };
 		FF61940327F7DA33007942A9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF61940227F7DA33007942A9 /* AppDelegate.swift */; };
 		FF61940527F7DA33007942A9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF61940427F7DA33007942A9 /* SceneDelegate.swift */; };
 		FF61940727F7DA33007942A9 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF61940627F7DA33007942A9 /* HomeViewController.swift */; };
@@ -30,6 +31,7 @@
 		FF2F072927F7E03E0032E1C0 /* HomeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeTableViewCell.xib; sourceTree = "<group>"; };
 		FF2F072E27F7EBC70032E1C0 /* PublishViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublishViewController.swift; sourceTree = "<group>"; };
 		FF2F073027F803170032E1C0 /* ArticlesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticlesModel.swift; sourceTree = "<group>"; };
+		FF2F073327F821B60032E1C0 /* MJRefreshWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJRefreshWrapper.swift; sourceTree = "<group>"; };
 		FF6193FF27F7DA33007942A9 /* Publisher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Publisher.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF61940227F7DA33007942A9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FF61940427F7DA33007942A9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -103,6 +105,14 @@
 			path = Resource;
 			sourceTree = "<group>";
 		};
+		FF2F073227F821A00032E1C0 /* Third Party Wrapper */ = {
+			isa = PBXGroup;
+			children = (
+				FF2F073327F821B60032E1C0 /* MJRefreshWrapper.swift */,
+			);
+			path = "Third Party Wrapper";
+			sourceTree = "<group>";
+		};
 		FF6193F627F7DA33007942A9 = {
 			isa = PBXGroup;
 			children = (
@@ -124,6 +134,7 @@
 		FF61940127F7DA33007942A9 /* Publisher */ = {
 			isa = PBXGroup;
 			children = (
+				FF2F073227F821A00032E1C0 /* Third Party Wrapper */,
 				FF2F072727F7DDFE0032E1C0 /* Resource */,
 				FF2F072627F7DDF70032E1C0 /* Controller */,
 				FF2F072527F7DDF40032E1C0 /* View */,
@@ -255,6 +266,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF2F073427F821B60032E1C0 /* MJRefreshWrapper.swift in Sources */,
 				FF2F072F27F7EBC70032E1C0 /* PublishViewController.swift in Sources */,
 				FF61940727F7DA33007942A9 /* HomeViewController.swift in Sources */,
 				FF61940327F7DA33007942A9 /* AppDelegate.swift in Sources */,

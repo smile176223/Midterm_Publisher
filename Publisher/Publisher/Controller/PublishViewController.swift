@@ -7,6 +7,10 @@
 
 import UIKit
 import Firebase
+ 
+protocol PublishViewControllerDelegate: AnyObject {
+    func refresh()
+}
 
 class PublishViewController: UIViewController {
     
@@ -18,6 +22,8 @@ class PublishViewController: UIViewController {
     
     let publishButton = UIButton()
     
+    weak var delegate: PublishViewControllerDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -28,14 +34,23 @@ class PublishViewController: UIViewController {
         guard let inputTitle = inputTitle.text else { return }
         guard let inputCategory = inputCategory.text else { return }
         
+        if inputTitle == "" || inputCategory == "" || inputContent.text == "" {
+            let alert = UIAlertController(title: "Error!"
+                                          , message: "Please Fill",
+                                          preferredStyle: .alert)
+            alert.addAction(UIAlertAction(
+                title: "ok",
+                style: .default,
+                handler: { (action: UIAlertAction!) -> Void in }))
+            self.present(alert, animated: true)
+
+        } else {
             addData(title: inputTitle,
                     category: inputCategory,
                     content: inputContent.text)
-        
-        if let homeVC = presentingViewController as? HomeViewController {
-            homeVC.getData()
+            delegate?.refresh()
+            dismiss(animated: true, completion: nil)
         }
-        dismiss(animated: true, completion: nil)
     }
     
     func addData(title: String, category: String, content: String) {
@@ -62,10 +77,7 @@ extension PublishViewController {
     private func setupLayout(){
 
         inputTitle.borderStyle = .bezel
-//        inputTitle.text = "Input Title"
-//        inputTitle.textColor = UIColor.lightGray
         view.addSubview(inputTitle)
-//        inputTitle.delegate = self
         inputTitle.translatesAutoresizingMaskIntoConstraints = false
         inputTitle.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor, constant: 4).isActive = true
         inputTitle.leftAnchor.constraint(equalTo: view.layoutMarginsGuide.leftAnchor, constant: 4).isActive = true
@@ -73,10 +85,7 @@ extension PublishViewController {
         inputTitle.heightAnchor.constraint(equalToConstant: 30).isActive = true
         
         inputCategory.borderStyle = .bezel
-//        inputCategory.text = "Input Category"
-//        inputCategory.textColor = UIColor.lightGray
         view.addSubview(inputCategory)
-//        inputCategory.delegate = self
         inputCategory.translatesAutoresizingMaskIntoConstraints = false
         inputCategory.topAnchor.constraint(equalTo: inputTitle.bottomAnchor, constant: 4).isActive = true
         inputCategory.leftAnchor.constraint(equalTo: view.layoutMarginsGuide.leftAnchor, constant: 4).isActive = true
@@ -85,11 +94,8 @@ extension PublishViewController {
         
         inputContent.layer.borderColor = UIColor.black.cgColor
         inputContent.layer.borderWidth = 1
-//        inputContent.text = "Input Content"
-//        inputContent.textColor = UIColor.lightGray
         inputContent.font = UIFont.systemFont(ofSize: 20)
         view.addSubview(inputContent)
-//        inputContent.delegate = self
         inputContent.translatesAutoresizingMaskIntoConstraints = false
         inputContent.topAnchor.constraint(equalTo: inputCategory.bottomAnchor, constant: 4).isActive = true
         inputContent.leftAnchor.constraint(equalTo: view.layoutMarginsGuide.leftAnchor, constant: 4).isActive = true
@@ -106,22 +112,5 @@ extension PublishViewController {
         publishButton.bottomAnchor.constraint(equalTo: view.layoutMarginsGuide.bottomAnchor, constant: -4).isActive = true
         publishButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
-    }
-}
-
-extension PublishViewController: UITextViewDelegate, UITextFieldDelegate {
-    
-    func textViewDidBeginEditing(_ textView: UITextView) {
-        if textView.textColor == UIColor.lightGray {
-            textView.text = nil
-            textView.textColor = UIColor.black
-        }
-    }
-    
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        if textField.textColor == UIColor.lightGray {
-            textField.text = nil
-            textField.textColor = UIColor.black
-        }
     }
 }
